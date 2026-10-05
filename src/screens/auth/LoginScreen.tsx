@@ -11,6 +11,8 @@ import {
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Colors, Spacing, BorderRadius, Shadows } from '../../theme';
 
+import { apiLogin } from '../../services/apiClient';
+
 interface LoginScreenProps {
   onSendOtp: (identifier: string) => void;
   onBiometricLogin: () => void;
@@ -22,14 +24,15 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
   onBiometricLogin,
   onDirectLogin,
 }) => {
-  const [authMethod, setAuthMethod] = useState<'mobile' | 'email'>('mobile');
+  const [authMethod, setAuthMethod] = useState<'mobile' | 'email'>('email');
   const [mobileNumber, setMobileNumber] = useState('9876543210');
-  const [email, setEmail] = useState('alex.vance@quantflow.io');
-  const [password, setPassword] = useState('password123');
+  const [email, setEmail] = useState('trader@platform.com');
+  const [password, setPassword] = useState('TraderPassword@123');
   const [showPassword, setShowPassword] = useState(false);
-  const [useOtpLogin, setUseOtpLogin] = useState(true);
+  const [useOtpLogin, setUseOtpLogin] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (authMethod === 'mobile') {
       if (mobileNumber.length < 10) {
         Alert.alert('Validation', 'Please enter a valid 10-digit mobile number');
@@ -44,7 +47,15 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
       if (useOtpLogin) {
         onSendOtp(email);
       } else {
-        onDirectLogin();
+        setLoading(true);
+        try {
+          await apiLogin(email.trim(), password);
+          setLoading(false);
+          onDirectLogin();
+        } catch (err: any) {
+          setLoading(false);
+          Alert.alert('Authentication Failed', err.message || 'Invalid email or password');
+        }
       }
     }
   };
