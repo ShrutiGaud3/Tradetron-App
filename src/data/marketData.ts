@@ -1,0 +1,103 @@
+import { MarketIndexQuote, OptionStrikeRow } from '../types';
+
+export const initialMarketIndices: MarketIndexQuote[] = [
+  {
+    symbol: 'NIFTY 50',
+    name: 'NIFTY 50',
+    ltp: 24532.10,
+    change: 102.40,
+    changePercent: 0.42,
+    high: 24580.00,
+    low: 24470.20,
+    open: 24485.00,
+    prevClose: 24429.70,
+    sparkline: [24430, 24460, 24490, 24475, 24510, 24532],
+  },
+  {
+    symbol: 'BANKNIFTY',
+    name: 'NIFTY BANK',
+    ltp: 52140.50,
+    change: 320.80,
+    changePercent: 0.62,
+    high: 52280.00,
+    low: 51900.00,
+    open: 51950.00,
+    prevClose: 51819.70,
+    sparkline: [51820, 51910, 52020, 51980, 52090, 52140],
+  },
+  {
+    symbol: 'FINNIFTY',
+    name: 'NIFTY FIN SERVICE',
+    ltp: 23820.00,
+    change: 74.50,
+    changePercent: 0.31,
+    high: 23890.00,
+    low: 23740.00,
+    open: 23760.00,
+    prevClose: 23745.50,
+    sparkline: [23745, 23770, 23810, 23790, 23820],
+  },
+  {
+    symbol: 'INDIA VIX',
+    name: 'INDIA VIX',
+    ltp: 13.85,
+    change: -0.45,
+    changePercent: -3.15,
+    high: 14.60,
+    low: 13.70,
+    open: 14.30,
+    prevClose: 14.30,
+    sparkline: [14.3, 14.1, 14.0, 13.9, 13.85],
+  },
+  {
+    symbol: 'SENSEX',
+    name: 'BSE SENSEX',
+    ltp: 80890.00,
+    change: 345.20,
+    changePercent: 0.43,
+    high: 81050.00,
+    low: 80600.00,
+    open: 80650.00,
+    prevClose: 80544.80,
+    sparkline: [80545, 80680, 80790, 80750, 80890],
+  },
+];
+
+export const mockOptionChainNifty: OptionStrikeRow[] = [
+  {
+    strikePrice: 24350,
+    call: { ltp: 220.40, changePercent: 18.2, oi: 1450000, iv: 13.2, volume: 820000 },
+    put: { ltp: 38.10, changePercent: -28.4, oi: 3200000, iv: 14.5, volume: 1450000 },
+  },
+  {
+    strikePrice: 24400,
+    call: { ltp: 182.50, changePercent: 15.4, oi: 2100000, iv: 13.4, volume: 1120000 },
+    put: { ltp: 51.20, changePercent: -24.1, oi: 4800000, iv: 14.2, volume: 2100000 },
+  },
+  {
+    strikePrice: 24450,
+    call: { ltp: 146.80, changePercent: 12.8, oi: 2890000, iv: 13.6, volume: 1450000 },
+    put: { ltp: 68.40, changePercent: -19.5, oi: 3900000, iv: 14.0, volume: 1850000 },
+  },
+  {
+    strikePrice: 24500,
+    isAtm: true,
+    call: { ltp: 112.80, changePercent: 8.5, oi: 5600000, iv: 13.8, volume: 3800000 },
+    put: { ltp: 89.20, changePercent: -14.2, oi: 6200000, iv: 13.9, volume: 4100000 },
+  },
+  {
+    strikePrice: 24550,
+    call: { ltp: 84.30, changePercent: 4.2, oi: 3400000, iv: 14.0, volume: 2200000 },
+    put: { ltp: 115.60, changePercent: -8.8, oi: 3100000, iv: 13.8, volume: 1650000 },
+  },
+  {
+    strikePrice: 24600,
+    call: { ltp: 60.10, changePercent: -2.4, oi: 6800000, iv: 14.3, volume: 3900000 },
+    put: { ltp: 148.50, changePercent: -4.1, oi: 2400000, iv: 13.7, volume: 1350000 },
+  },
+  {
+    strikePrice: 24650,
+    call: { ltp: 41.20, changePercent: -8.5, oi: 2900000, iv: 14.6, volume: 1450000 },
+    put: { ltp: 186.20, changePercent: 1.2, oi: 1800000, iv: 13.6, volume: 920000 },
+  },
+];
